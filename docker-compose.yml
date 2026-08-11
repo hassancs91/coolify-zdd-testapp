@@ -1,0 +1,13 @@
+# E5: the same app deployed as a Docker Compose resource.
+# Coolify's docs state compose deployments do NOT get rolling updates - this
+# measures what that costs. Only variables we actually set are referenced
+# (Coolify injects every referenced ${VAR} as an empty string).
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - APP_VERSION=v1-compose
+    expose:
+      - "3000"
